@@ -84,6 +84,8 @@ var App = {
 
     // contact form
 
+    $("#budget").mask("R$ ?999999");
+
     $("#phone").focusout(function(){
       var phone, element;
       element = $(this);
