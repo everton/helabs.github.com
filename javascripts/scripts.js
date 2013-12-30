@@ -82,6 +82,24 @@ var App = {
       $(this).attr("src", "/images/time/time-eduardo.gif");
     });
 
+    // contact form
+    $("#talk-to-us").validate({
+      rules: {
+        Field3: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        Field18: "Nome é obrigatório",
+        Field19: "Sobrenome é obrigatório",
+        Field3: "Email inválido",
+        Field16: "Telefone é obrigatório",
+        Field21: "Orçamento é obrigatório",
+        Field5: "Resumo do projeto é obrigatório"
+      }
+    });
+
     //
     $('.hide-content').addClass("hidden");
 
