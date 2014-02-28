@@ -1,16 +1,25 @@
 @charset "utf-8";
 
+/* Anchors within the page needs this trick
+ * to avoid that the header stays over the
+ * elements.
+ */
+@mixin anchor {
+  margin-top: -110px;
+  padding-top: 110px;
+}
 
 /* ====================
 Services - MVP
 ==================== */
 
 #cover-mvp {
+  margin:  80px 0 0 0;
+  padding: 30px 0;
+
   background: #222 url('/images/mvp-page/pattern.jpg');
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
   text-align: center;
-  margin-top: 80px;
-  padding: 60px 0 55px 0;
   border-bottom: 10px solid $grey2;
   color: #fff;
 
@@ -29,73 +38,40 @@ Services - MVP
     margin: 10px 0 0 0;
     font-size: $font-large;
   }
-  
+
+  a {
+    outline: none;
+    text-decoration: none;
+  }
 }
 
+#call-to-action {
+  @include round_borders (4px);
+  position: relative;
+  box-shadow: 0 0 12px #111;
+  border: 1px solid #ff1717;
+  height: 50px;
+  line-height: 50px;
+  background: $he_red;
+  padding: 5px 35px;
+  margin: 45px 0 20px 0;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $font-large;
+  font-weight: bold;
+  color: #fff;
+  z-index: 9999;
 
-/* Cover Entry */
-
-#cover-entry {
-  margin: 59px 0 0 0;
-  text-align: left;
-  @include clearfix;
-
-  .column-01,
-  .column-02 { width: 46%; }
-
-  .column-01 {
-    border-top: 1px dashed $grey3;
-    padding: 35px 0 0 0;
-    float: left;
-
-    h3 {
-      font-size: $font-large;
-      margin: 0 0 15px 0;
-    }
-
-    p {
-      font-size: $font-medium2;
-      line-height: 26px;
-    }
-    
-    a {
-      box-shadow: 0 0 12px #111;
-      @include round_borders (4px);
-      border: 1px solid #ff1717;
-      height: 50px;
-      line-height: 50px;
-      background: $he_red;
-      padding: 0 15px 0 15px;
-      text-decoration: none;
-      display: inline-block;
-      font-size: $font-medium2;
-      color: #fff;
-
-      &:hover {
-        background: #c10808;
-      }
-    }
+  &:hover {
+    background: #c10808;
   }
-
-  .column-02 {
-    float: right;
-  
-    iframe {
-      width: 98%;
-      padding: 1%;
-      box-shadow: 0 0 12px #111;
-      background: $grey3;
-    }
-  }
-  
 }
-
 
 /* Como Funciona */
 
 #mvp-steps {
   margin-left: 92px;
-  margin-top: 38px;
+  margin-top: 35px;
   overflow: hidden;
   text-align: center;
 }
@@ -152,51 +128,118 @@ Services - MVP
   margin-left: -5px;
 }
 
-
-/* Projects */
-
+/* MVP */
 #mvp {
-
-  h3 {
-    margin: 55px 0 40px 0;
-    font-size: $font-big;
-    text-align: center;
-
-    strong {
-      font-weight: 300;
+  section {
+    h2 {
       font-size: $font-large;
-      color: $grey3;
+      margin: 50px 0;
+      text-align: center;
+      text-transform: uppercase;
+      width: 100%;
     }
   }
 }
 
-.mvp-projects {
-  text-align: center;
-  
-  li {
-    width: 22%;
-    margin: 0 1% 50px 1%;
-    display: inline-block;
+/* MVP explained */
+
+#mvp-explained {
+  @include clearfix;
+  @include anchor;
+
+  text-align: left;
+  position: relative;
+  margin-bottom: 20px;
+
+  .column-01,
+  .column-02 { width: 46%; }
+
+  .column-01 {
+    float: left;
+
+    h2 {
+      font-size: $font-large;
+      margin: 0 0 15px 0;
+    }
+
+    p {
+      font-size: $font-medium2;
+      line-height: 26px;
+    }
   }
 
-  img {
-    width: 97%;
-    border: 1px solid $light-grey2;
-    padding: 1%
+  .column-02 {
+    float: right;
+
+    iframe {
+      width: 98%;
+      padding: 1%;
+      box-shadow: 0 0 12px #111;
+      background: $grey3;
+    }
+  }
+}
+
+/* Explanation of the "Formula" */
+
+#mvp-formula {
+  margin: 80px 0;
+  text-align: left;
+
+  h2 {
+    font-size: $font-large;
+    margin: 0 0 15px 0;
   }
 
-  h4 {
-    text-transform: none;
-    margin: 15px 0 0 0;
-    font-size: $font-medium2;
-    color: #000;
+  .step {
+    /* Each step has a link to it, so we need to
+     * compensate the fixed position of the header
+     */
+    @include anchor;
+
+    h3 {
+      font-size: $font-medium2;
+      margin: 25px 0;
+    }
   }
+}
 
-  a {
-    text-decoration: none;
-    h4 { color: $he_red; }
+/* Projects */
 
-    &:hover img { opacity: .7; }
+#mvp-projects {
+  margin-top: 50px;
+
+  ul {
+    text-align: center;
+
+    li {
+        width: 22%;
+        margin: 0 1% 50px 1%;
+        display: inline-block;
+    }
+
+    img {
+        width: 97%;
+        border: 1px solid $light-grey2;
+        padding: 1%
+    }
+
+    h4 {
+        text-transform: none;
+        margin: 15px 0 0 0;
+        font-size: $font-medium2;
+        color: #000;
+    }
+
+    a {
+        text-decoration: none;
+        h4 { color: $he_red; }
+
+        &:hover img { opacity: .7; }
+    }
   }
+}
 
+#contact {
+  @include anchor;
 }
